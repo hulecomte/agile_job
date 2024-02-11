@@ -1,0 +1,33 @@
+[
+ {
+  "surveyId": 123,
+  "questions": [
+    {
+      "id": 1,
+      "text": "Do you think John Cena is great at teamwork?",
+      "ratingRange": 5
+    },
+    {
+      "id": 2,
+      "text": "Is John Cena easy to work with?",
+      "ratingRange": 5
+    },
+    {
+	"id": 3,
+	"text": "Do you like working with John Cena?",
+	"ratingRange": 5
+
+    },
+    {
+	"id": 4,
+	"text": "Is John Cena efficient enough?",
+        "ratingRange": 5
+    },
+    {
+	"id": 5,
+	"text": "Can you see John Cena?",
+	"ratingRange": 5
+    }
+  ]
+}
+]

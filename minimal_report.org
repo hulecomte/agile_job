@@ -1,0 +1,75 @@
+* Overall impression
+I think I respected the requirement of the assignment. I also tried to
+separate the front from the back as much as possible and making the
+whole project generic enough so we can easily add more surveys. I spent
+a lot of time experimenting with Spring Boost and Vue Js but really
+appreciated it in the end. I would benefit from better tools though, I
+used an emacs version unmodded for web developpement. Part of this
+project, especially the SurveyController could also benefit from
+better pattern design. Automated tests are lacking. Since I started
+from tutorial projects some file naming might be unrelated to the
+assignment.
+
+* Usage
+
+Unzip the archive.
+
+There is two folder, use `npm run serve` in the vue-server folder and
+`./mvnw spring-boot:run` in the spring-boost-server folder.
+
+To test it go to http://localhost:8085/survey/123, submit the survey
+when done and visit http://localhost:8085/results/123.  You can add
+another survey in the json file located in the resource directory of
+the spring boot server if you want to play around.
+
+* Spring Boost server
+** SurveyController.java
+*** getSurveyData
+Load a json object from the survey.json file matching a given
+surveyId.
+
+*** submitSurveyResults
+Receive survey results then save them in a SurveyResult object with
+id, surveyId, data to a repository.
+
+*** getAllResults
+Return all elements stored in the repository.
+
+*** getSurveyData
+Filter SurveyResult objects from the repository matching a given surveyId, then return them.
+** SurveyResultsRepository.java
+Interface from CrudRepository. findBySurveyId() method is prototyped
+then automatically generated thanks to CrudRepository.
+
+** SurveyResult.java
+Used to store survey results in the repository. Each object is
+identified by a unique Id (representing each survey result
+submission).
+
+** Misc
+*** Database
+Mysql handled by Spring Boost.
+
+*** Surveys
+Surveys are stored in a json file in the resources folder of the
+project.
+
+* Vue Js server
+** SurveyQuestion.vue
+Accessible at http://localhost:8085/survey/{surveyId} where surveyId
+is the Id of a survey existing in the json file located in the Spring
+Boot server resources file.  After fetching it, the server will render
+it then allows to submit results.  surveyId and results are posted to
+the Spring Boot server.  Requests are handled by axios.
+
+** SurveyResults.vue
+Accessible at http://localhost:8085/results/{surveyId}.  The vue js
+server will fetch the results matching the surveyId, then display it
+on the page as a list with the id of the result object and the ratings
+saved.
+
+** router.js
+Handle all the routing of the pages to their urls.
+
+* Automated Tests
+none yet
